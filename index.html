@@ -1,0 +1,416 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="./sider.css">
+    <title>Foft drink product card</title>
+    <style>
+        * {
+            box-sizing: border-box;
+            padding: 0;
+            margin: 0;
+        }
+
+        body {
+            font-family: 'Baloo 2', sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            background-color: #f4f4f4;
+        }
+
+        .container {
+            background-color: #eee0f5;
+            padding: 20px 40px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            display: flex;
+            flex-direction: column;
+            width: 800px;
+            max-width: 800px;
+            margin: 20px;
+        }
+
+        .rating {
+            font-size: 24px;
+            display: flex;
+            gap: 8px;
+            color: #12433d;
+        }
+
+        .product-name {
+            color: #14443e;
+            font-size: 36px;
+            margin-bottom: 10px;
+            line-height: 0.8;
+        }
+
+        /* --------------------------- */
+        .product-container {
+            display: flex;
+            margin-top: 30px;
+        }
+
+        .product-image {
+            width: 300px;
+            margin-right: 40px;
+            padding: 40px 0;
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background-color: #e6ade6;
+        }
+
+        .product-image img {
+            max-width: 100px;
+            height: auto;
+        }
+
+        /* -------------------------------- */
+        .product-details {
+            display: flex;
+            flex-direction: column;
+            /* background-color: pink; */
+        }
+
+        /* .container-options {
+        } */
+
+        .container-options .description {
+            /* background-color: firebrick; */
+            display: flex;
+            gap: 4px;
+            margin: 10px 0;
+            color: #12433d;
+        }
+
+        .purchase-options {
+            width: 320px;
+
+            /* background: red; */
+            margin-bottom: 20px;
+            margin-left: 10px;
+            padding: 5px 10px;
+            border-radius: 20px;
+            border: 3px solid #12433d;
+            display: flex;
+            align-items: center;
+            flex-direction: column;
+            /* align-items: center; */
+            /* justify-content: center; */
+        }
+
+        .option {
+            /* background-color: #4caf50; */
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            /* background-color: antiquewhite; */
+        }
+
+        .option label {
+            font-weight: 500;
+        }
+
+        .option-check {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 15px;
+            /* background-color: darkblue; */
+        }
+
+        .subscribe-save {
+            /* background-color: saddlebrown; */
+            width: 20px;
+            height: 20px;
+            border-radius: 100%;
+            border: 3px solid #12433d;
+        }
+
+        .option-check label {
+            color: #12433d;
+            font-weight: 100;
+        }
+
+        input[type="radio"] {
+            margin-right: 10px;
+            width: 15px;
+            height: 15px;
+            /* border: 3px solid #2c3e50; */
+        }
+
+        /* ------------------------------------- */
+
+        .frequency-container {
+            width: 270px;
+            margin: 10px 0 30px 0;
+            padding: 8px;
+            border-radius: 15px;
+            background-color: transparent;
+            outline: none;
+            border: 3px solid #12433d;
+            font-weight: semibold;
+            position: relative;
+        }
+
+        .frequency-dropdown {
+            position: relative;
+        }
+
+        .dropdown {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .dropdown img {
+            width: 18px;
+            height: 15px;
+        }
+
+        .selected-frequency {
+            cursor: pointer;
+            display: block;
+        }
+
+        .frequency-options {
+            position: absolute;
+            top: 45px;
+            left: 0;
+            display: none;
+            width: 100%;
+            background-color: #eee0f5;
+            border: 3px solid #12433d;
+            /* border-top: none; */
+            border-radius: 10px;
+            z-index: 1;
+        }
+
+        .frequency-option {
+            display: block;
+            padding: 10px;
+            cursor: pointer;
+            border-bottom: 1px solid #ccc;
+        }
+
+        /* ------------------------------------- */
+
+        .quantity-selector {
+            display: flex;
+            align-items: center;
+            margin-top: 10px;
+        }
+
+        .quantity-selector button {
+            padding: 5px 10px;
+            background-color: #4caf50;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            margin: 0 5px;
+        }
+
+        input[type="text"] {
+            padding: 5px;
+            text-align: center;
+            width: 40px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+
+        /* ------------------------------------------ */
+        .quantity-container {
+            width: auto;
+            padding: 3px 5px;
+            display: flex;
+            gap: 10px;
+            justify-content: center;
+            align-items: center;
+            border: 3px solid #12433d;
+            border-radius: 20px;
+            margin-left: 10px;
+            margin-bottom: 10px;
+            width: 80px;
+        }
+
+        .decrease {
+            font-size: 18px;
+            font-weight: bold;
+            border: 0;
+            background-color: transparent;
+        }
+
+        .quantity {
+            width: 20px;
+            font-size: 18px;
+            font-weight: bold;
+            display: flex;
+            justify-content: center;
+        }
+
+        .increase {
+            font-size: 18px;
+            font-weight: bold;
+            border: 0;
+            background-color: transparent;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container" id="container">
+        <div class="product-header">
+            <div class="rating">
+                <span class="star">&#9733;</span>
+                <span class="star">&#9733;</span>
+                <span class="star">&#9733;</span>
+                <span class="star">&#9733;</span>
+                <span class="star">&#9733;</span>
+            </div>
+            <p class="product-name">Crisp Apple</p>
+        </div>
+        <div class="product-container">
+            <div class="product-image">
+                <img src="../asset/434-4345970_free-crushed-soda-can-png-clip-art-pop 1.png" alt="Crisp Apple">
+            </div>
+            <div class="product-details">
+                <div class="container-options">
+                    <div class="description">
+                        <h4>Choose your Frequency </h4>
+                        <p>Subscribe & Save 15%</p>
+                    </div>
+                    <div class="purchase-options">
+                        <div class="option first-purchase-option">
+                            <div class="option-check">
+                                <div class="subscribe-save jajaja" id="first-option-check"></div>
+                                <label for="one-time" class="first-option-text">One-time purchase</label>
+                            </div>
+                            <label for="one-time">$35.99</label>
+                        </div>
+                    </div>
+                    <div class="purchase-options">
+                        <div class="option second-purchase-option">
+                            <div class="option-check">
+                                <div class="subscribe-save jajaja" id="second-option-check"></div>
+                                <label for="subscribe-save" class="second-option-text">Subscribe & Save</label>
+                            </div>
+                            <label for="subscribe-save">$30.99</label>
+                        </div>
+                        <div class="frequency-container">
+                            <div class="frequency-dropdown">
+                                <div class="dropdown">
+                                    <span class="selected-frequency">Delivered every 2 weeks</span>
+                                    <img src="../asset/Polygon 1.png"></img>
+                                </div>
+                                <div class="frequency-options">
+                                    <span class="frequency-option" data-value="2-semanas">Delivered every 2 weeks</span>
+                                    <span class="frequency-option" data-value="1-semana">Delivered weekly</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="quantity-container">
+                    <button class="decrease" id="decrease">-</button>
+                    <span class="quantity" id="quantity">1</span>
+                    <button class="increase" id="increase">+</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- <script src="./indexx.js" defer></script> -->
+    <script>
+
+        // Obtener elementos del DOM
+        const frequencyDropdown = document.querySelector('.frequency-dropdown');
+        const selectedFrequency = document.querySelector('.selected-frequency');
+        const frequencyOptions = document.querySelector('.frequency-options');
+
+        const firstOptionText = document.querySelector('.first-option-text');
+        const secondOptionText = document.querySelector('.second-option-text');
+
+        const firstOptionCheck = document.getElementById('first-option-check');
+        const secondOptionCheck = document.getElementById('second-option-check');
+
+        // const firstPurchaseOption = document.querySelector('.first-purchase-option')
+        // const secondPurchaseOption = document.querySelector('.second-purchase-option')
+
+        // Función para visualizar y ocultar el modal
+        function toggleFrequencyOptions() {
+            frequencyOptions.style.display = frequencyOptions.style.display === 'block' ? 'none' : 'block';
+            console.log(frequencyOptions.style.display)
+        }
+
+        // Asignar evento de clic al contenedor del modal
+        frequencyDropdown.addEventListener('click', toggleFrequencyOptions);
+
+        // Asignar evento de clic al documento para cerrar el modal al hacer clic fuera de él
+        document.addEventListener('click', function (event) {
+            const isClickInsideFrequencyContainer = frequencyDropdown.contains(event.target);
+
+            if (!isClickInsideFrequencyContainer) {
+                frequencyOptions.style.display = 'none';
+            }
+        });
+
+        // Asignar evento de clic a cada opción del modal
+        const frequencyOptionElements = document.querySelectorAll('.frequency-option');
+        frequencyOptionElements.forEach(option => {
+            option.addEventListener('click', function () {
+                selectedFrequency.textContent = option.textContent;
+                secondOptionText.style.fontWeight = 'bold';
+                secondOptionCheck.style.backgroundColor = '#12433d';
+
+                firstOptionText.style.fontWeight = '100';
+                firstOptionCheck.style.backgroundColor = 'transparent';
+            });
+        });
+
+        /* -------------------------------------------------- */
+        // asignar evento click a la primera opcion de compra
+        document.querySelector('.first-purchase-option').addEventListener('click', () => {
+            firstOptionText.style.fontWeight = 'bold';
+            firstOptionCheck.style.backgroundColor = '#12433d';
+
+            secondOptionText.style.fontWeight = '100';
+            secondOptionCheck.style.backgroundColor = 'transparent'
+        });
+
+        // asignar evento click a la segunda opcion de compra
+        document.querySelector('.second-purchase-option').addEventListener('click', () => {
+
+            secondOptionText.style.fontWeight = 'bold';
+            secondOptionCheck.style.backgroundColor = '#12433d'
+
+            firstOptionText.style.fontWeight = '100';
+            firstOptionCheck.style.backgroundColor = 'transparent';
+        });
+
+        /* -------------------------------------------------- */
+
+        let quantity = 1;
+        document.getElementById('decrease').addEventListener('click', function () {
+            if (quantity > 1) {
+                quantity--;
+                document.getElementById('quantity').textContent = quantity;
+            }
+        });
+
+        document.getElementById('increase').addEventListener('click', function () {
+            quantity++;
+            document.getElementById('quantity').textContent = quantity;
+        });
+
+    </script>
+</body>
+
+</html>
